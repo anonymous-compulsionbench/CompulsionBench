@@ -20,8 +20,7 @@ Both backends share the same observation space, action space, calibration target
 
 - `compulsionbench/`: The core Python library, RL environment (Gymnasium), agent implementations (PPO, Lagrangian PPO, baselines), and execution scripts.
 - `scripts/`: Submission scripts and data aggregation bash scripts used to produce the final 4-seed cluster results.
-- `paper_llm_v2_final/`: The official evaluated results bundle, containing scorecards, calibration plots, convergence logs, and mechanism ablations presented in the manuscript.
-- `main_31a8.tex`: The LaTeX source for the manuscript.
+- `results/`: The official evaluated results bundle, containing scorecards, calibration plots, convergence logs, and mechanism ablations presented in the manuscript.
 - `config_calibrated.json`: The frozen, Optuna-calibrated hyperparameters used across all experiments.
 
 ## Installation & Usage
