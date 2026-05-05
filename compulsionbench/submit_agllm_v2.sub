@@ -1,0 +1,50 @@
+#!/bin/bash
+#SBATCH --job-name=ag-llm-v2
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+#SBATCH --time=2-00:00:00
+#SBATCH --output=ag-llm-v2_%j.log
+#SBATCH --error=ag-llm-v2_%j.err
+
+# =================================================================
+# Phase 2: AGLLM Run (Corrected Parameters + LLM Backend)
+# Runs AFTER Phase 1 (submit_agparam_v2.sub) completes.
+# Trains its own PPO models with corrected params + evaluates via LLM.
+# Estimated time: 12-36 hours on A100
+# =================================================================
+
+PROJECT_DIR=/path/to/AddictionGym
+WORK_DIR=$PROJECT_DIR/compulsionbench
+
+module load cuda/12.1
+
+# Activate conda environment
+source activate $PROJECT_DIR/conda-envs/addictiongym
+
+export HF_HOME=$PROJECT_DIR/.cache/huggingface
+export TRANSFORMERS_CACHE=$PROJECT_DIR/.cache/huggingface
+export TOKENIZERS_PARALLELISM=false
+
+echo "Running AGLLM Paper Run v2 (Corrected Parameters + Qwen2.5-7B)..."
+
+cd $WORK_DIR
+python compulsionbench.py run_paper \
+  --outdir outputs/paper_llm_v2 \
+  --run_profile main \
+  --config_json $PROJECT_DIR/config_calibrated.json \
+  --threshold_source fixed_paper \
+  --with_llm \
+  --llm_mode hf \
+  --llm_model_id Qwen/Qwen2.5-7B-Instruct \
+  --fit_llm_fusion \
+  --paper_mode \
+  --device cuda \
+  --seed 0 \
+  --log_level INFO \
+  --log_file outputs/paper_llm_v2/run.log
+
+echo "AGLLM v2 complete."

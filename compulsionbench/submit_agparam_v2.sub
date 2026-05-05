@@ -1,0 +1,46 @@
+#!/bin/bash
+#SBATCH --job-name=ag-param-v2
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+#SBATCH --time=2-00:00:00
+#SBATCH --output=ag-param-v2_%j.log
+#SBATCH --error=ag-param-v2_%j.err
+
+# =================================================================
+# Phase 1: AGParam Run (Corrected Parameters)
+# Paper-faithful run: 1M PPO steps, 5 seeds, 5000 eval episodes
+# Estimated time: 12-36 hours on A100
+# =================================================================
+
+PROJECT_DIR=/path/to/AddictionGym
+WORK_DIR=$PROJECT_DIR/compulsionbench
+
+module load cuda/12.1
+
+# Activate conda environment
+source activate $PROJECT_DIR/conda-envs/addictiongym
+
+export HF_HOME=$PROJECT_DIR/.cache/huggingface
+export TRANSFORMERS_CACHE=$PROJECT_DIR/.cache/huggingface
+export TOKENIZERS_PARALLELISM=false
+
+echo "Running AGParam Paper Run v2 (Corrected Parameters)..."
+echo "  rho_f=0.08, chi_c=0.25, rho_h_loc=-3.0, rho_c_loc=-2.5"
+echo "  PPO steps: 1,000,000 | Seeds: 5 | Eval episodes: 5,000"
+
+cd $WORK_DIR
+python compulsionbench.py run_paper \
+  --outdir outputs/paper_param_v2 \
+  --run_profile main \
+  --config_json $PROJECT_DIR/config_calibrated.json \
+  --threshold_source fixed_paper \
+  --device cuda \
+  --seed 0 \
+  --log_level INFO \
+  --log_file outputs/paper_param_v2/run.log
+
+echo "AGParam v2 complete."

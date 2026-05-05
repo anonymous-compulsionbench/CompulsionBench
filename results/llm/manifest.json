@@ -1,0 +1,333 @@
+{
+  "config_path": "/path/to/AddictionGym/compulsionbench/outputs/v2_llm_array/seed_0/config_used.json",
+  "run_profile": "main",
+  "threshold_source": "fixed_paper",
+  "num_train_seeds": 1,
+  "eval_episodes": 500,
+  "lag_search_mode": "two_stage",
+  "lag_search_steps": 25000,
+  "lag_search_val_episodes": 200,
+  "lag_full_steps": 1000000,
+  "lag_full_val_episodes": 200,
+  "lag_dual_lr_grid_search": [
+    0.1,
+    0.2
+  ],
+  "lag_topk_candidates": 1,
+  "evaluation_cache_entries": 26,
+  "evaluation_cache_hits": 1,
+  "evaluation_cache_misses": 26,
+  "tables": [
+    "table_mechanism_ablations.csv",
+    "table_mechanism_ablations.md",
+    "table_official_policy_episode_outputs.csv",
+    "table_scorecard_deterministic.csv",
+    "table_scorecard_deterministic.md",
+    "table_scorecard_stochastic.csv",
+    "table_scorecard_stochastic.md"
+  ],
+  "figures": [
+    "fig_mechanism_ablations.png",
+    "frontier_overcap.png",
+    "mechanism_ablations.png",
+    "policy_radar_deterministic.png",
+    "scorecard_deterministic_heatmap.png",
+    "scorecard_stochastic_heatmap.png",
+    "training_convergence.png"
+  ],
+  "train_seed_list": "train_seed_list.json",
+  "val_episode_seeds": "val_episode_seeds.json",
+  "test_episode_seeds": "test_episode_seeds.json",
+  "binding_cap_grid": [
+    10.0,
+    15.0,
+    20.0
+  ],
+  "table_scorecard_deterministic": "tables/table_scorecard_deterministic.csv",
+  "table_scorecard_stochastic": "tables/table_scorecard_stochastic.csv",
+  "official_policy_episode_outputs": "tables/table_official_policy_episode_outputs.csv",
+  "official_main_eval_mode": "deterministic",
+  "paper_thresholds": {
+    "threshold_source": "fixed_paper",
+    "source": "fixed_paper",
+    "selected_delta_sess": null,
+    "rounding_step_minutes": null,
+    "raw_session_length_quantiles": {},
+    "raw_session_item_count_quantiles": {},
+    "T_ref": 15.0,
+    "T_cap": 15.0,
+    "cap_grid": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "break_T": 30.0,
+    "break_J": 20
+  },
+  "table_thresholds": "table_thresholds.md",
+  "table_proxy_orthogonality_audit": "tables/table_proxy_orthogonality_audit.csv",
+  "proxy_orthogonality_audit": "proxy_orthogonality_audit.md",
+  "constraint_track_proxy_diagnostics": {
+    "night_minutes_cumwatch_corr_policy_means": 0.9989956977868014,
+    "night_minutes_cumwatch_corr_episodes": 0.7464553229408878,
+    "night_minutes_is_scalar_proxy": true,
+    "policy_count": 8,
+    "episode_count": 4000,
+    "promoted_main_text_proxy": "LateNightSessionStartRate",
+    "night_proxy_appendix_only": false,
+    "main_text_scorecard_risk_metrics": [
+      "OverCapMinutes",
+      "LateNightSessionStartRate"
+    ],
+    "reason": "Promoting LateNightSessionStartRate to the main-text scorecard because its |policy-mean corr| with CumWatch is 0.757 and it changes at least one policy comparison.",
+    "proxy_candidates": {
+      "NightMinutes": {
+        "metric": "NightMinutes",
+        "policy_mean_corr": 0.9989956977868014,
+        "episode_corr": 0.7464553229408878,
+        "num_policies": 8,
+        "num_episodes": 4000,
+        "changed_policy_comparison": false,
+        "changed_pair_count": 0,
+        "comparison_examples": [],
+        "eligible_main_text": false,
+        "promotion_reason": "abs(policy-mean corr) too high or no policy comparison changes relative to CumWatch",
+        "night_minutes_is_scalar_proxy": true
+      },
+      "NightFraction": {
+        "metric": "NightFraction",
+        "policy_mean_corr": 0.81891231812146,
+        "episode_corr": 0.17174478965297255,
+        "num_policies": 8,
+        "num_episodes": 4000,
+        "changed_policy_comparison": true,
+        "changed_pair_count": 10,
+        "comparison_examples": [
+          {
+            "pair": [
+              "Myopic",
+              "RoundRobinPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              77.82117238041127
+            ],
+            "metric_values": [
+              0.3593180569580095,
+              0.3510962991795013
+            ]
+          },
+          {
+            "pair": [
+              "Myopic",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              76.25560265124778
+            ],
+            "metric_values": [
+              0.3593180569580095,
+              0.3537378610547454
+            ]
+          },
+          {
+            "pair": [
+              "Myopic",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              76.25543894928435
+            ],
+            "metric_values": [
+              0.3593180569580095,
+              0.35230320510002455
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              77.82117238041127,
+              76.25560265124778
+            ],
+            "metric_values": [
+              0.3510962991795013,
+              0.3537378610547454
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              77.82117238041127,
+              76.25543894928435
+            ],
+            "metric_values": [
+              0.3510962991795013,
+              0.35230320510002455
+            ]
+          }
+        ],
+        "eligible_main_text": true,
+        "promotion_reason": "eligible",
+        "night_minutes_is_scalar_proxy": false
+      },
+      "LateNightSessionStartRate": {
+        "metric": "LateNightSessionStartRate",
+        "policy_mean_corr": 0.7573504683409339,
+        "episode_corr": 0.18832307471128293,
+        "num_policies": 8,
+        "num_episodes": 4000,
+        "changed_policy_comparison": true,
+        "changed_pair_count": 9,
+        "comparison_examples": [
+          {
+            "pair": [
+              "Myopic",
+              "RoundRobinPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              77.82117238041127
+            ],
+            "metric_values": [
+              0.2553252402706401,
+              0.24957418434439432
+            ]
+          },
+          {
+            "pair": [
+              "Myopic",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              76.25560265124778
+            ],
+            "metric_values": [
+              0.2553252402706401,
+              0.2522281169486352
+            ]
+          },
+          {
+            "pair": [
+              "Myopic",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              66.5351523743063,
+              76.25543894928435
+            ],
+            "metric_values": [
+              0.2553252402706401,
+              0.2511096855355948
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              77.82117238041127,
+              76.25560265124778
+            ],
+            "metric_values": [
+              0.24957418434439432,
+              0.2522281169486352
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              77.82117238041127,
+              76.25543894928435
+            ],
+            "metric_values": [
+              0.24957418434439432,
+              0.2511096855355948
+            ]
+          }
+        ],
+        "eligible_main_text": true,
+        "promotion_reason": "eligible",
+        "night_minutes_is_scalar_proxy": false
+      }
+    }
+  },
+  "constraint_track_screening": [
+    {
+      "status": "active",
+      "reason": "Using OverCapMinutes as the only constrained channel. LateNightSessionStartRate cleared the descriptive orthogonality audit for main-text reporting, but it is not a per-step budget term.",
+      "active_channels": [
+        "OverCapMinutes"
+      ],
+      "channels_label": "OverCapMinutes",
+      "use_night_budget": false,
+      "use_over_budget": true,
+      "night_budget_active": false,
+      "over_budget_active": true,
+      "ppo_validation_night_minutes": 22.162373492831353,
+      "ppo_validation_overcap_minutes": 3.2112089089210203,
+      "night_minutes_cumwatch_corr_policy_means": 0.9990586049618794,
+      "night_minutes_cumwatch_corr_episodes": 0.7493973487636236,
+      "night_minutes_is_scalar_proxy": true,
+      "main_text_night_proxy": "LateNightSessionStartRate",
+      "night_proxy_appendix_only": false,
+      "train_seed": 0,
+      "corr_threshold": 0.95
+    }
+  ],
+  "with_llm": true,
+  "paper_mode": true,
+  "llm_mode": "hf",
+  "llm_model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "calibrated_against_logs": false,
+  "table_frontier_rebuilt": "tables/table_frontier_rebuilt.csv",
+  "fig_frontier_overcap_rebuilt": "figures/fig_frontier_overcap_rebuilt.png",
+  "frontier_secondary_metric": "LateNightSessionStartRate",
+  "fig_frontier_secondary_risk_rebuilt": "figures/fig_frontier_LateNightSessionStartRate_rebuilt.png",
+  "table_cap_sensitivity_rebuilt": "tables/table_cap_sensitivity_rebuilt.csv",
+  "table_backend_sensitivity": "tables/table_backend_sensitivity.csv",
+  "table_llm_recovery": "tables/table_llm_recovery.csv",
+  "table_llm_ablation": "tables/table_llm_ablation.csv",
+  "llm_cache_stats": "llm_cache_stats.json",
+  "agllm_release_manifest": "agllm_release_manifest.json",
+  "official_policy_episode_count": 500,
+  "official_policy_episode_limit": null,
+  "table_mechanism_ablations": "tables/table_mechanism_ablations.csv",
+  "fig_mechanism_ablations": "figures/fig_mechanism_ablations.png",
+  "mechanism_ablations_memo": "mechanism_ablations_memo.md",
+  "mechanism_ablation_night_metric": "LateNightSessionStartRate",
+  "mechanism_ablation_night_metric_appendix_only": false,
+  "mechanism_ablation_episode_limit": null
+}

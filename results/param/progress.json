@@ -1,0 +1,14 @@
+{
+  "current_task": null,
+  "current_task_id": null,
+  "task_index": 94,
+  "total_tasks": 94,
+  "task_done": 0,
+  "task_total": 0,
+  "task_unit": null,
+  "tasks_completed": 94,
+  "overall_fraction": 1.0,
+  "elapsed_sec": 1522.7903042300022,
+  "eta_sec": 0.0,
+  "message": "path=outputs/paper_param_main/manifest.json"
+}

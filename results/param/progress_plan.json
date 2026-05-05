@@ -1,0 +1,569 @@
+{
+  "total_tasks": 94,
+  "tasks": [
+    {
+      "task_id": "run_setup_artifacts",
+      "name": "Setup run artifacts",
+      "unit_name": "files",
+      "total_units": 5
+    },
+    {
+      "task_id": "seed0_eval_random_test",
+      "name": "Random test evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_train_logged_dataset",
+      "name": "Logged dataset collection (seed 0)",
+      "unit_name": "transitions",
+      "total_units": 20000
+    },
+    {
+      "task_id": "seed0_train_myopic",
+      "name": "Myopic training (seed 0)",
+      "unit_name": "epochs",
+      "total_units": 8
+    },
+    {
+      "task_id": "seed0_eval_myopic_test_deterministic",
+      "name": "Myopic test deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_myopic_test_stochastic",
+      "name": "Myopic test stochastic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_RoundRobinPolicy_official_test_deterministic",
+      "name": "RoundRobinPolicy official deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_LeastRecentPolicy_official_test_deterministic",
+      "name": "LeastRecentPolicy official deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_NoveltyGreedyPolicy_official_test_deterministic",
+      "name": "NoveltyGreedyPolicy official deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_cap_default_deterministic",
+      "name": "PPO default session-cap deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_cap_default_stochastic",
+      "name": "PPO default session-cap stochastic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_train_ppo",
+      "name": "PPO training (seed 0)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed0_eval_ppo_validation_deterministic",
+      "name": "PPO validation deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 1000
+    },
+    {
+      "task_id": "seed0_eval_ppo_test_deterministic",
+      "name": "PPO test deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_test_stochastic",
+      "name": "PPO test stochastic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_autoplay_off_mitigation",
+      "name": "PPO autoplay-off mitigation evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_9500_search_dual_0_0500",
+      "name": "LagPPO scale=0.95 search dual_lr=0.0500 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_9500_search_dual_0_1000",
+      "name": "LagPPO scale=0.95 search dual_lr=0.1000 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_9000_search_dual_0_0500",
+      "name": "LagPPO scale=0.90 search dual_lr=0.0500 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_9000_search_dual_0_1000",
+      "name": "LagPPO scale=0.90 search dual_lr=0.1000 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_8500_search_dual_0_0500",
+      "name": "LagPPO scale=0.85 search dual_lr=0.0500 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_scale_0_8500_search_dual_0_1000",
+      "name": "LagPPO scale=0.85 search dual_lr=0.1000 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed0_train_lagppo_confirm_1",
+      "name": "LagPPO confirm candidate 1 (seed 0)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed0_eval_lagppo_confirm_1_test_deterministic",
+      "name": "LagPPO confirm candidate 1 test deterministic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_lagppo_main_test_stochastic",
+      "name": "Lagrangian PPO test stochastic evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_cap_1",
+      "name": "PPO session-cap evaluation #1 (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_cap_2",
+      "name": "PPO session-cap evaluation #2 (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_cap_3",
+      "name": "PPO session-cap evaluation #3 (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_nohabit",
+      "name": "PPO NoHabit evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_lagppo_nohabit",
+      "name": "LagPPO NoHabit evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed0_eval_ppo_break_prompt_probe",
+      "name": "PPO break-prompt probe evaluation (seed 0)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_random_test",
+      "name": "Random test evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_train_logged_dataset",
+      "name": "Logged dataset collection (seed 1)",
+      "unit_name": "transitions",
+      "total_units": 20000
+    },
+    {
+      "task_id": "seed1_train_myopic",
+      "name": "Myopic training (seed 1)",
+      "unit_name": "epochs",
+      "total_units": 8
+    },
+    {
+      "task_id": "seed1_eval_myopic_test_deterministic",
+      "name": "Myopic test deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_myopic_test_stochastic",
+      "name": "Myopic test stochastic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_RoundRobinPolicy_official_test_deterministic",
+      "name": "RoundRobinPolicy official deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_LeastRecentPolicy_official_test_deterministic",
+      "name": "LeastRecentPolicy official deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_NoveltyGreedyPolicy_official_test_deterministic",
+      "name": "NoveltyGreedyPolicy official deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_cap_default_deterministic",
+      "name": "PPO default session-cap deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_cap_default_stochastic",
+      "name": "PPO default session-cap stochastic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_train_ppo",
+      "name": "PPO training (seed 1)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed1_eval_ppo_validation_deterministic",
+      "name": "PPO validation deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 1000
+    },
+    {
+      "task_id": "seed1_eval_ppo_test_deterministic",
+      "name": "PPO test deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_test_stochastic",
+      "name": "PPO test stochastic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_autoplay_off_mitigation",
+      "name": "PPO autoplay-off mitigation evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_9500_search_dual_0_0500",
+      "name": "LagPPO scale=0.95 search dual_lr=0.0500 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_9500_search_dual_0_1000",
+      "name": "LagPPO scale=0.95 search dual_lr=0.1000 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_9000_search_dual_0_0500",
+      "name": "LagPPO scale=0.90 search dual_lr=0.0500 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_9000_search_dual_0_1000",
+      "name": "LagPPO scale=0.90 search dual_lr=0.1000 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_8500_search_dual_0_0500",
+      "name": "LagPPO scale=0.85 search dual_lr=0.0500 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_scale_0_8500_search_dual_0_1000",
+      "name": "LagPPO scale=0.85 search dual_lr=0.1000 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed1_train_lagppo_confirm_1",
+      "name": "LagPPO confirm candidate 1 (seed 1)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed1_eval_lagppo_confirm_1_test_deterministic",
+      "name": "LagPPO confirm candidate 1 test deterministic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_lagppo_main_test_stochastic",
+      "name": "Lagrangian PPO test stochastic evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_cap_1",
+      "name": "PPO session-cap evaluation #1 (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_cap_2",
+      "name": "PPO session-cap evaluation #2 (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_cap_3",
+      "name": "PPO session-cap evaluation #3 (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_nohabit",
+      "name": "PPO NoHabit evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_lagppo_nohabit",
+      "name": "LagPPO NoHabit evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed1_eval_ppo_break_prompt_probe",
+      "name": "PPO break-prompt probe evaluation (seed 1)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_random_test",
+      "name": "Random test evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_train_logged_dataset",
+      "name": "Logged dataset collection (seed 2)",
+      "unit_name": "transitions",
+      "total_units": 20000
+    },
+    {
+      "task_id": "seed2_train_myopic",
+      "name": "Myopic training (seed 2)",
+      "unit_name": "epochs",
+      "total_units": 8
+    },
+    {
+      "task_id": "seed2_eval_myopic_test_deterministic",
+      "name": "Myopic test deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_myopic_test_stochastic",
+      "name": "Myopic test stochastic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_RoundRobinPolicy_official_test_deterministic",
+      "name": "RoundRobinPolicy official deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_LeastRecentPolicy_official_test_deterministic",
+      "name": "LeastRecentPolicy official deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_NoveltyGreedyPolicy_official_test_deterministic",
+      "name": "NoveltyGreedyPolicy official deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_cap_default_deterministic",
+      "name": "PPO default session-cap deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_cap_default_stochastic",
+      "name": "PPO default session-cap stochastic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_train_ppo",
+      "name": "PPO training (seed 2)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed2_eval_ppo_validation_deterministic",
+      "name": "PPO validation deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 1000
+    },
+    {
+      "task_id": "seed2_eval_ppo_test_deterministic",
+      "name": "PPO test deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_test_stochastic",
+      "name": "PPO test stochastic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_autoplay_off_mitigation",
+      "name": "PPO autoplay-off mitigation evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_9500_search_dual_0_0500",
+      "name": "LagPPO scale=0.95 search dual_lr=0.0500 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_9500_search_dual_0_1000",
+      "name": "LagPPO scale=0.95 search dual_lr=0.1000 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_9000_search_dual_0_0500",
+      "name": "LagPPO scale=0.90 search dual_lr=0.0500 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_9000_search_dual_0_1000",
+      "name": "LagPPO scale=0.90 search dual_lr=0.1000 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_8500_search_dual_0_0500",
+      "name": "LagPPO scale=0.85 search dual_lr=0.0500 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_scale_0_8500_search_dual_0_1000",
+      "name": "LagPPO scale=0.85 search dual_lr=0.1000 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 25000
+    },
+    {
+      "task_id": "seed2_train_lagppo_confirm_1",
+      "name": "LagPPO confirm candidate 1 (seed 2)",
+      "unit_name": "steps",
+      "total_units": 100000
+    },
+    {
+      "task_id": "seed2_eval_lagppo_confirm_1_test_deterministic",
+      "name": "LagPPO confirm candidate 1 test deterministic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_lagppo_main_test_stochastic",
+      "name": "Lagrangian PPO test stochastic evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_cap_1",
+      "name": "PPO session-cap evaluation #1 (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_cap_2",
+      "name": "PPO session-cap evaluation #2 (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_cap_3",
+      "name": "PPO session-cap evaluation #3 (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_nohabit",
+      "name": "PPO NoHabit evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_lagppo_nohabit",
+      "name": "LagPPO NoHabit evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "seed2_eval_ppo_break_prompt_probe",
+      "name": "PPO break-prompt probe evaluation (seed 2)",
+      "unit_name": "episodes",
+      "total_units": 500
+    },
+    {
+      "task_id": "run_table_aggregation",
+      "name": "Table aggregation",
+      "unit_name": "files",
+      "total_units": 16
+    },
+    {
+      "task_id": "run_figure_generation",
+      "name": "Figure generation",
+      "unit_name": "files",
+      "total_units": 4
+    },
+    {
+      "task_id": "run_manifest_writing",
+      "name": "Manifest writing",
+      "unit_name": "files",
+      "total_units": 1
+    }
+  ]
+}

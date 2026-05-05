@@ -1,0 +1,51 @@
+#!/bin/bash
+#SBATCH --job-name=ag-array-v2
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+#SBATCH --time=12:00:00
+#SBATCH --array=0-4%2
+#SBATCH --output=logs/array_v2_%A_%a.log
+#SBATCH --error=logs/array_v2_%A_%a.err
+
+# =================================================================
+# Maintenance-Buster: Throttled Job Array (5 seeds, 2 at a time)
+# Each task trains 1 seed of PPO + LagPPO with corrected parameters.
+# walltime: 12 hours (Beats the 30-hour maintenance window).
+# =================================================================
+
+PROJECT_DIR=/path/to/AddictionGym
+WORK_DIR=$PROJECT_DIR/compulsionbench
+
+module load cuda/12.1
+source activate $PROJECT_DIR/conda-envs/addictiongym
+
+export HF_HOME=$PROJECT_DIR/.cache/huggingface
+export TOKENIZERS_PARALLELISM=false
+
+SEED=$SLURM_ARRAY_TASK_ID
+OUT_DIR=$WORK_DIR/outputs/v2_array/seed_$SEED
+
+mkdir -p $OUT_DIR
+mkdir -p $WORK_DIR/logs
+
+echo "Running AGParam Paper Seed $SEED (Corrected Parameters)..."
+
+cd $WORK_DIR
+python compulsionbench.py run_paper \
+  --outdir $OUT_DIR \
+  --run_profile main \
+  --config_json $PROJECT_DIR/config_calibrated.json \
+  --threshold_source fixed_paper \
+  --num_train_seeds 1 \
+  --seed $SEED \
+  --ppo_steps 1000000 \
+  --eval_episodes 5000 \
+  --device cuda \
+  --log_level INFO \
+  --log_file $OUT_DIR/run.log
+
+echo "Seed $SEED complete."

@@ -1,0 +1,41 @@
+#!/bin/bash
+#SBATCH --job-name=ag-llm
+#SBATCH --output=%x_%j.log
+#SBATCH --error=%x_%j.err
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus-per-node=1
+#SBATCH --mem=80G
+#SBATCH --time=24:00:00
+
+# Base directories in SCRATCH
+PROJECT_DIR=$YOUR_SCRATCH_DIR/addictiongym
+
+# Load modules and activate env
+module load anaconda || module load anaconda/2020.11-py38
+module load cuda/12.1
+source activate $PROJECT_DIR/conda-envs/addictiongym
+
+# Set HuggingFace home to scratch to avoid home quota limits
+export HF_HOME=$PROJECT_DIR/.cache/huggingface
+mkdir -p $HF_HOME
+
+cd $PROJECT_DIR/compulsionbench
+
+echo "Running LLM Main Paper Run (AGLLM) with Qwen2.5-7B..."
+python compulsionbench.py run_paper \
+  --outdir outputs/paper_llm_hf \
+  --run_profile main \
+  --device cuda \
+  --config_json ../config_calibrated.json \
+  --threshold_source fixed_paper \
+  --with_llm \
+  --llm_mode hf \
+  --llm_model_id Qwen/Qwen2.5-7B-Instruct \
+  --fit_llm_fusion \
+  --paper_mode \
+  --seed 0 \
+  --log_level INFO

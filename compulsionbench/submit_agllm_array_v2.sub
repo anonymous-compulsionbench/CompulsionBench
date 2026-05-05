@@ -1,0 +1,60 @@
+#!/bin/bash
+#SBATCH --job-name=ag-llm-array-v2
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+#SBATCH --time=48:00:00
+#SBATCH --array=0-4%5
+#SBATCH --output=logs/llm_array_v2_%A_%a.log
+#SBATCH --error=logs/llm_array_v2_%A_%a.err
+
+# =================================================================
+# Phase 2: AGLLM Throttled Job Array (5 seeds, 2 at a time)
+# Submit this AFTER finalize_param_results.sh completes.
+# Each task trains + evaluates 1 seed with the Qwen2.5-7B LLM.
+# =================================================================
+
+PROJECT_DIR=/path/to/AddictionGym
+WORK_DIR=$PROJECT_DIR/compulsionbench
+
+module load conda
+module load cuda/12.1
+conda activate $PROJECT_DIR/conda-envs/addictiongym
+
+export HF_HOME=$PROJECT_DIR/.cache/huggingface
+export TOKENIZERS_PARALLELISM=false
+
+SEED=$SLURM_ARRAY_TASK_ID
+OUT_DIR=$WORK_DIR/outputs/v2_llm_array/seed_$SEED
+
+mkdir -p $OUT_DIR
+mkdir -p $WORK_DIR/logs
+
+echo "Running AGLLM Seed $SEED (Corrected Parameters + Qwen2.5-7B)..."
+
+cd $WORK_DIR
+python compulsionbench.py run_paper \
+  --outdir $OUT_DIR \
+  --run_profile main \
+  --config_json $PROJECT_DIR/config_calibrated.json \
+  --threshold_source fixed_paper \
+  --num_train_seeds 1 \
+  --seed $SEED \
+  --ppo_steps 1000000 \
+  --val_episodes 200 \
+  --eval_episodes 500 \
+  --constraint_scales 0.7 0.5 0.3 \
+  --dual_lr 0.1 \
+  --with_llm \
+  --llm_mode hf \
+  --llm_model_id Qwen/Qwen2.5-7B-Instruct \
+  --fit_llm_fusion \
+  --paper_mode \
+  --device cuda \
+  --log_level INFO \
+  --log_file $OUT_DIR/run.log
+
+echo "AGLLM Seed $SEED complete."

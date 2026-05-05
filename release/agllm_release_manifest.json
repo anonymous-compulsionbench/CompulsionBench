@@ -1,0 +1,84 @@
+{
+  "primary_checkpoint": "Qwen/Qwen2.5-7B-Instruct",
+  "robustness_checkpoint": "Qwen/Qwen2.5-14B-Instruct",
+  "tokenizer": {
+    "source": "checkpoint-native tokenizer",
+    "library": "transformers",
+    "version": "4.46.3"
+  },
+  "inference_runtime": {
+    "library": "transformers",
+    "version": "4.46.3",
+    "dtype": "bfloat16",
+    "quantization": "none"
+  },
+  "prompt_templates": {
+    "watch": {
+      "path": "prompts/agllm_watch_prompt.txt",
+      "sha256": "91fbd0eb16f6432ece2efbd3198a3974d052df84391a56bf4ed78fa5e96cb284"
+    },
+    "continue": {
+      "path": "prompts/agllm_continue_prompt.txt",
+      "sha256": "32f43893da0ef17533c18bd3b973f1ca18c9ef6a0db304737e1a91aa876f14cc"
+    }
+  },
+  "language_policy": {
+    "prompt_template_language": "zh",
+    "runtime_must_load_released_templates": true,
+    "runtime_must_assert_template_hashes": true
+  },
+  "paper_mode": {
+    "required_for_main_text": true,
+    "synthetic_fallback_cards_forbidden": true
+  },
+  "card_schema": {
+    "schema_version": "agllm_card_v2",
+    "index_base": 0,
+    "required_fields": [
+      "archetype_id",
+      "cluster_id",
+      "medoid_item_id",
+      "topic_tag",
+      "category_level1",
+      "category_level2",
+      "duration_bucket",
+      "popularity_bucket"
+    ],
+    "metadata_duration_field_aliases": [
+      "duration_sec",
+      "duration_seconds"
+    ],
+    "novelty_note_policy": "runtime_derived_from_recent_history"
+  },
+  "card_builder_script": "scripts/build_archetype_cards.py",
+  "parse_repair_code_path": "scripts/parse_agllm_response.py",
+  "cache_policy": {
+    "prebuild_required_seed_sets": [
+      "fit_llm_fusion_context",
+      "fit_llm_fusion_heldout_targets",
+      "validation_episode_seeds",
+      "test_episode_seeds"
+    ],
+    "warn_if_cache_hit_rate_below": 0.95
+  },
+  "released_cache_artifact": {
+    "available": false,
+    "path": null,
+    "note": "This workspace releases deterministic cache-rebuild scripts rather than precomputed watch/continue tables."
+  },
+  "released_dashboard_stats": {
+    "invalid_json_rate": 0.0,
+    "repair_rate": 0.0,
+    "fallback_rate": 0.0,
+    "cache_hit_rate": 0.0,
+    "note": "Measured on seed-matched AGLLM benchmark evaluation after explicit cache prebuild."
+  },
+  "runtime_validation": {
+    "paper_mode": false,
+    "watch_template_hash": "91fbd0eb16f6432ece2efbd3198a3974d052df84391a56bf4ed78fa5e96cb284",
+    "continue_template_hash": "32f43893da0ef17533c18bd3b973f1ca18c9ef6a0db304737e1a91aa876f14cc",
+    "cache_hit_rate_warning_threshold": 0.95,
+    "fit_llm_fusion": false,
+    "fit_summary": {}
+  }
+}

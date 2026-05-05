@@ -1,0 +1,35 @@
+#!/bin/bash
+#SBATCH --job-name=ag-calibrate
+#SBATCH --output=%x_%j.log
+#SBATCH --error=%x_%j.err
+#SBATCH --account=your_account
+#SBATCH --partition=a100-80gb
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus-per-node=1
+#SBATCH --mem=64G
+#SBATCH --time=04:00:00
+
+# Base directories in SCRATCH
+PROJECT_DIR=$YOUR_SCRATCH_DIR/addictiongym
+
+# Load modules and activate env
+module purge
+module load anaconda
+source activate $PROJECT_DIR/conda-envs/addictiongym
+
+cd $PROJECT_DIR/compulsionbench
+
+echo "Running Smoke Test..."
+python compulsionbench.py smoke_test --outdir outputs/smoke --log_level INFO
+
+echo "Running Optuna Calibration from KuaiRand logs..."
+python compulsionbench.py calibrate_optuna \
+  --log_csv ../data/derived/kuairand_standard_concat.csv \
+  --outdir outputs/calibration_kuairand \
+  --threshold_source fixed_paper \
+  --exploratory_trials 300 \
+  --episodes_per_trial 200 \
+  --seed 0 \
+  --log_level INFO

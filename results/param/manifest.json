@@ -1,0 +1,401 @@
+{
+  "config_path": "outputs/paper_param_main/config_used.json",
+  "run_profile": "main",
+  "threshold_source": "fixed_paper",
+  "num_train_seeds": 3,
+  "eval_episodes": 500,
+  "lag_search_mode": "two_stage",
+  "lag_search_steps": 25000,
+  "lag_search_val_episodes": 200,
+  "lag_full_steps": 100000,
+  "lag_full_val_episodes": 1000,
+  "lag_dual_lr_grid_search": [
+    0.05,
+    0.1
+  ],
+  "lag_topk_candidates": 1,
+  "evaluation_cache_entries": 58,
+  "evaluation_cache_hits": 2,
+  "evaluation_cache_misses": 58,
+  "tables": [
+    "table_cap_fragmentation.csv",
+    "table_cap_fragmentation.md",
+    "table_cap_sensitivity.csv",
+    "table_cap_sensitivity.md",
+    "table_cap_sensitivity_rebuilt.csv",
+    "table_cap_sensitivity_rebuilt.md",
+    "table_frontier.csv",
+    "table_frontier.md",
+    "table_frontier_rebuilt.csv",
+    "table_frontier_rebuilt.md",
+    "table_mechanism_ablations.csv",
+    "table_mechanism_ablations.md",
+    "table_nohabit_main.csv",
+    "table_nohabit_main.md",
+    "table_official_policy_episode_outputs.csv",
+    "table_proxy_orthogonality_audit.csv",
+    "table_proxy_orthogonality_audit.md",
+    "table_scorecard_deterministic.csv",
+    "table_scorecard_deterministic.md",
+    "table_scorecard_stochastic.csv",
+    "table_scorecard_stochastic.md"
+  ],
+  "figures": [
+    "fig_cap_fragmentation.png",
+    "fig_frontier_NightFraction.png",
+    "fig_frontier_NightFraction_rebuilt.png",
+    "fig_frontier_OverCapMinutes.png",
+    "fig_frontier_overcap_rebuilt.png",
+    "fig_mechanism_ablations.png"
+  ],
+  "train_seed_list": "train_seed_list.json",
+  "val_episode_seeds": "val_episode_seeds.json",
+  "test_episode_seeds": "test_episode_seeds.json",
+  "binding_cap_grid": [
+    90.0,
+    120.0,
+    150.0
+  ],
+  "table_scorecard_deterministic": "tables/table_scorecard_deterministic.csv",
+  "table_scorecard_stochastic": "tables/table_scorecard_stochastic.csv",
+  "official_policy_episode_outputs": "tables/table_official_policy_episode_outputs.csv",
+  "official_main_eval_mode": "deterministic",
+  "paper_thresholds": {
+    "threshold_source": "fixed_paper",
+    "source": "fixed_paper",
+    "selected_delta_sess": null,
+    "rounding_step_minutes": null,
+    "raw_session_length_quantiles": {},
+    "raw_session_item_count_quantiles": {},
+    "T_ref": 120.0,
+    "T_cap": 120.0,
+    "cap_grid": [
+      90.0,
+      120.0,
+      150.0
+    ],
+    "break_T": 30.0,
+    "break_J": 20
+  },
+  "table_thresholds": "table_thresholds.md",
+  "table_proxy_orthogonality_audit": "tables/table_proxy_orthogonality_audit.csv",
+  "proxy_orthogonality_audit": "proxy_orthogonality_audit.md",
+  "constraint_track_proxy_diagnostics": {
+    "night_minutes_cumwatch_corr_policy_means": 0.995051876258579,
+    "night_minutes_cumwatch_corr_episodes": 0.7041728765683276,
+    "night_minutes_is_scalar_proxy": true,
+    "policy_count": 8,
+    "episode_count": 12000,
+    "promoted_main_text_proxy": "NightFraction",
+    "night_proxy_appendix_only": false,
+    "main_text_scorecard_risk_metrics": [
+      "OverCapMinutes",
+      "NightFraction"
+    ],
+    "reason": "Promoting NightFraction to the main-text scorecard because its |policy-mean corr| with CumWatch is 0.410 and it changes at least one policy comparison.",
+    "proxy_candidates": {
+      "NightMinutes": {
+        "metric": "NightMinutes",
+        "policy_mean_corr": 0.995051876258579,
+        "episode_corr": 0.7041728765683276,
+        "num_policies": 8,
+        "num_episodes": 12000,
+        "changed_policy_comparison": true,
+        "changed_pair_count": 1,
+        "comparison_examples": [
+          {
+            "pair": [
+              "LeastRecentPolicy",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              27.765862311717925,
+              27.998404634430415
+            ],
+            "metric_values": [
+              7.928227236327163,
+              7.899408284041236
+            ]
+          }
+        ],
+        "eligible_main_text": false,
+        "promotion_reason": "abs(policy-mean corr) too high or no policy comparison changes relative to CumWatch",
+        "night_minutes_is_scalar_proxy": true
+      },
+      "NightFraction": {
+        "metric": "NightFraction",
+        "policy_mean_corr": 0.4099701877544561,
+        "episode_corr": 0.09698791205009576,
+        "num_policies": 8,
+        "num_episodes": 12000,
+        "changed_policy_comparison": true,
+        "changed_pair_count": 8,
+        "comparison_examples": [
+          {
+            "pair": [
+              "Myopic",
+              "PPO+AutoplayOff"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              23.29344224028463,
+              20.03936329004386
+            ],
+            "metric_values": [
+              0.26947970487301687,
+              0.2736448195460229
+            ]
+          },
+          {
+            "pair": [
+              "Myopic",
+              "Lagrangian PPO"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              23.29344224028463,
+              23.20393240131722
+            ],
+            "metric_values": [
+              0.26947970487301687,
+              0.27193002629489116
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              28.506871876022803,
+              27.765862311717925
+            ],
+            "metric_values": [
+              0.27381453458782523,
+              0.2744377467394196
+            ]
+          },
+          {
+            "pair": [
+              "LeastRecentPolicy",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              27.765862311717925,
+              27.998404634430415
+            ],
+            "metric_values": [
+              0.2744377467394196,
+              0.27207293990500164
+            ]
+          },
+          {
+            "pair": [
+              "NoveltyGreedyPolicy",
+              "PPO+AutoplayOff"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              27.998404634430415,
+              20.03936329004386
+            ],
+            "metric_values": [
+              0.27207293990500164,
+              0.2736448195460229
+            ]
+          }
+        ],
+        "eligible_main_text": true,
+        "promotion_reason": "eligible",
+        "night_minutes_is_scalar_proxy": false
+      },
+      "LateNightSessionStartRate": {
+        "metric": "LateNightSessionStartRate",
+        "policy_mean_corr": 0.679464826337312,
+        "episode_corr": 0.08518507218659288,
+        "num_policies": 8,
+        "num_episodes": 12000,
+        "changed_policy_comparison": true,
+        "changed_pair_count": 6,
+        "comparison_examples": [
+          {
+            "pair": [
+              "Myopic",
+              "PPO+AutoplayOff"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              23.29344224028463,
+              20.03936329004386
+            ],
+            "metric_values": [
+              0.2460524686588098,
+              0.24650035379699942
+            ]
+          },
+          {
+            "pair": [
+              "RoundRobinPolicy",
+              "LeastRecentPolicy"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              28.506871876022803,
+              27.765862311717925
+            ],
+            "metric_values": [
+              0.2483961562740038,
+              0.24987288143893613
+            ]
+          },
+          {
+            "pair": [
+              "LeastRecentPolicy",
+              "NoveltyGreedyPolicy"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              27.765862311717925,
+              27.998404634430415
+            ],
+            "metric_values": [
+              0.24987288143893613,
+              0.24830654694155374
+            ]
+          },
+          {
+            "pair": [
+              "PPO",
+              "PPO+AutoplayOff"
+            ],
+            "cumwatch_order": 1,
+            "metric_order": -1,
+            "cumwatch_values": [
+              23.13836206812384,
+              20.03936329004386
+            ],
+            "metric_values": [
+              0.24294513751263716,
+              0.24650035379699942
+            ]
+          },
+          {
+            "pair": [
+              "PPO+AutoplayOff",
+              "PPO + SessionCap(120)"
+            ],
+            "cumwatch_order": -1,
+            "metric_order": 1,
+            "cumwatch_values": [
+              20.03936329004386,
+              23.13836206812384
+            ],
+            "metric_values": [
+              0.24650035379699942,
+              0.24294513751263716
+            ]
+          }
+        ],
+        "eligible_main_text": true,
+        "promotion_reason": "eligible",
+        "night_minutes_is_scalar_proxy": false
+      }
+    }
+  },
+  "constraint_track_screening": [
+    {
+      "status": "descriptive_only",
+      "reason": "NightFraction is retained as a descriptive main-text proxy, but OverCapMinutes is inactive on PPO validation so no constrained budget channel remains active.",
+      "active_channels": [],
+      "channels_label": "none",
+      "use_night_budget": false,
+      "use_over_budget": false,
+      "night_budget_active": false,
+      "over_budget_active": false,
+      "ppo_validation_night_minutes": 6.674477757657988,
+      "ppo_validation_overcap_minutes": 0.0,
+      "night_minutes_cumwatch_corr_policy_means": 0.9877957766054292,
+      "night_minutes_cumwatch_corr_episodes": 0.7066988463431061,
+      "night_minutes_is_scalar_proxy": true,
+      "main_text_night_proxy": "NightFraction",
+      "night_proxy_appendix_only": false,
+      "train_seed": 0,
+      "corr_threshold": 0.95
+    },
+    {
+      "status": "descriptive_only",
+      "reason": "NightFraction is retained as a descriptive main-text proxy, but OverCapMinutes is inactive on PPO validation so no constrained budget channel remains active.",
+      "active_channels": [],
+      "channels_label": "none",
+      "use_night_budget": false,
+      "use_over_budget": false,
+      "night_budget_active": false,
+      "over_budget_active": false,
+      "ppo_validation_night_minutes": 6.690787617152848,
+      "ppo_validation_overcap_minutes": 0.0,
+      "night_minutes_cumwatch_corr_policy_means": 0.9896031483256059,
+      "night_minutes_cumwatch_corr_episodes": 0.7050101139611982,
+      "night_minutes_is_scalar_proxy": true,
+      "main_text_night_proxy": "NightFraction",
+      "night_proxy_appendix_only": false,
+      "train_seed": 1,
+      "corr_threshold": 0.95
+    },
+    {
+      "status": "descriptive_only",
+      "reason": "NightFraction is retained as a descriptive main-text proxy, but OverCapMinutes is inactive on PPO validation so no constrained budget channel remains active.",
+      "active_channels": [],
+      "channels_label": "none",
+      "use_night_budget": false,
+      "use_over_budget": false,
+      "night_budget_active": false,
+      "over_budget_active": false,
+      "ppo_validation_night_minutes": 6.65542747556429,
+      "ppo_validation_overcap_minutes": 0.0,
+      "night_minutes_cumwatch_corr_policy_means": 0.9948652412461052,
+      "night_minutes_cumwatch_corr_episodes": 0.7050356799941748,
+      "night_minutes_is_scalar_proxy": true,
+      "main_text_night_proxy": "NightFraction",
+      "night_proxy_appendix_only": false,
+      "train_seed": 2,
+      "corr_threshold": 0.95
+    }
+  ],
+  "with_llm": false,
+  "paper_mode": false,
+  "llm_mode": "surrogate",
+  "llm_model_id": null,
+  "calibrated_against_logs": false,
+  "table_frontier_rebuilt": "tables/table_frontier_rebuilt.csv",
+  "fig_frontier_overcap_rebuilt": "figures/fig_frontier_overcap_rebuilt.png",
+  "frontier_secondary_metric": "NightFraction",
+  "fig_frontier_secondary_risk_rebuilt": "figures/fig_frontier_NightFraction_rebuilt.png",
+  "table_cap_sensitivity_rebuilt": "tables/table_cap_sensitivity_rebuilt.csv",
+  "table_mechanism_ablations": "tables/table_mechanism_ablations.csv",
+  "fig_mechanism_ablations": "figures/fig_mechanism_ablations.png",
+  "mechanism_ablations_memo": "mechanism_ablations_memo.md",
+  "mechanism_ablation_night_metric": "NightFraction",
+  "mechanism_ablation_night_metric_appendix_only": false,
+  "mechanism_ablation_episode_limit": null,
+  "table_cap_fragmentation": "tables/table_cap_fragmentation.csv",
+  "fig_cap_fragmentation": "figures/fig_cap_fragmentation.png",
+  "cap_fragmentation_memo": "cap_fragmentation_memo.md",
+  "cap_fragmentation_episode_diagnostics": [
+    "episode_diagnostics/cap_fragmentation_PPO.csv",
+    "episode_diagnostics/cap_fragmentation_PPO_Cap_90.csv",
+    "episode_diagnostics/cap_fragmentation_PPO_Cap_120.csv",
+    "episode_diagnostics/cap_fragmentation_PPO_Cap_150.csv"
+  ]
+}
